@@ -23,6 +23,20 @@ bool tekuci(unsigned long long broj)
         return false;
 
 }
+bool ispisivanje_podataka(string prezimeIme[], unsigned long long int brRacuna[],double saldo[],int brKlijenata,string pretrazivanje)
+{int br=0;
+    for(int i=0;i<brKlijenata;i++)
+    {
+        if(prezimeIme[i]==pretrazivanje){
+        cout<<brRacuna[i]<<", "<<saldo[i]<<endl;
+        br++;}
+    }
+    if(br==0)
+        return false;
+    return true;
+
+
+}
 
 int main()
 {
@@ -85,6 +99,19 @@ int main()
                 cout<<"Broj tekucih racuna: "<<count_if(brRacuna,brRacuna+brKlijenata,tekuci)<<endl;
               }
 
+            else if(izbor==3)
+            {
+                cout<< "Unesite ime i prezime koje pretrazujete: ";
+                string pretrazivanje;
+                cin.ignore();
+                getline(cin,pretrazivanje);
+                if(ispisivanje_podataka(prezimeIme,brRacuna,saldo,brKlijenata,pretrazivanje)==false)
+                {
+                    cout<<"Nema takvih klijenata"<<endl;
+                }
+
+
+            }
 
 
     }
