@@ -112,6 +112,30 @@ int main()
 
 
             }
+            else if(izbor==4)
+                    {
+                        unsigned long long broj;int i;
+                        cout<<"Unesite broj racuna koji zelite izbrisati: ";
+                        cin>>broj;
+                        for(i=0;i<brKlijenata;i++)
+                        {
+                            if(brRacuna[i]==broj)
+                            {
+                                for(int j=0;j<brKlijenata;j++)
+                                {
+                                    brRacuna[j]=brRacuna[j+1];
+                                    prezimeIme[j]=prezimeIme[j+1];
+                                    saldo[j]=saldo[j+1];
+                                }
+                                brKlijenata--;
+                                break;
+                            }
+                        }
+                        if(i==brKlijenata)
+                            cout<<"Trazenog broja nema.";
+
+                    }
+
 
 
     }
