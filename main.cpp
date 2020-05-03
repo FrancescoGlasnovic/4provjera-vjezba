@@ -166,6 +166,60 @@ int main()
 
 
                     }
+            else if(izbor==6)
+            {
+                unsigned long long broj2;
+                cout<<"Unesite broj racuna koji zelite urediti: ";
+                cin>>broj2;
+                unsigned long long index=lower_bound(brRacuna,brRacuna+brKlijenata,broj2)-brRacuna;
+                for(int i=0;i<brKlijenata;i++)
+                    for(int j=brKlijenata-1;j>i;j++)
+                        {
+                            if(brRacuna[j]<brRacuna[i-1])
+                            {
+                                int temp1=brRacuna[j];
+                                brRacuna[j]=brRacuna[j-1];
+                                brRacuna[j-1]=temp1;
+                                string temp2=prezimeIme[j];
+                                prezimeIme[j]=prezimeIme[j-1];
+                                prezimeIme[j-1]=temp2;
+                                int temp3=saldo[j];
+                                saldo[j]=saldo[j-1];
+                                saldo[j-1]=temp3;
+                            }
+                        }
+
+                if(binary_search(brRacuna,brRacuna+brKlijenata,broj2))
+                {
+                    unsigned long long unos2;
+                    while(1)
+                    {
+                        try
+                        {
+                            cout << "Unesite novi broj racuna: ";
+                            cin >> unos2;
+                            if(unos2<1000000000 || unos2>9999999999)
+                                throw "Broj racuna mora imati 10 znamenki.";
+                            break;
+                        }
+                        catch(const char* msg)
+                        {
+                            cout << msg << endl;
+                        }
+                    }
+                    brRacuna[index]=unos2;
+                    cout << "Unesite novo prezime i ime: " << endl;
+                    cin.ignore();
+                    getline(cin, prezimeIme[index]);
+                    cout << "Unesite novi saldo: ";
+                    cin >> saldo[index];
+
+                }
+                else
+                    cout<<"Trazenog broja nema.";
+
+
+            }
 
 
 
